@@ -7,12 +7,21 @@
     <PackageTags />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
-    <PackageLicenseFile></PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/codereflex-technologies/Extentions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/codereflex-technologies/Extentions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="LICENSE" />
-  </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
