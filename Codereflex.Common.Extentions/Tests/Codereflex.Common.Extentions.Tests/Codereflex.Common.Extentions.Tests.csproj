@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Codereflex.Common.Extentions\Codereflex.Common.Extentions.csproj" />
+    <ProjectReference Include="..\..\Src\Codereflex.Common.Extentions\Codereflex.Common.Extentions.csproj" />
   </ItemGroup>
 
 </Project>

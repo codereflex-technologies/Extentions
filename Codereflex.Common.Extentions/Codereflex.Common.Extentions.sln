@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{FE579F06-7579-4F06-B892-9A17157E8693}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{483CFC02-72AC-4FBE-A60A-9C8B03C9EAB1}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\README.md = Docs\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codereflex.Common.Extentions", "Src\Codereflex.Common.Extentions\Codereflex.Common.Extentions.csproj", "{24732520-5726-4C2A-A5EF-D620F1AF3050}"
 EndProject
