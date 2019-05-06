@@ -1,7 +1,7 @@
 ﻿namespace Codereflex.Common.Extentions
 {
     /// <summary>
-    /// Defines  parser
+    /// Defines  Mapper
     /// </summary>
     public interface IMapper<TMap>
     {

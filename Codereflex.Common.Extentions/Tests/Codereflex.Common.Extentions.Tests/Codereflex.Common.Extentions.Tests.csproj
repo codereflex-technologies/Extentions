@@ -17,4 +17,10 @@
     <ProjectReference Include="..\..\Src\Codereflex.Common.Extentions\Codereflex.Common.Extentions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="test.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

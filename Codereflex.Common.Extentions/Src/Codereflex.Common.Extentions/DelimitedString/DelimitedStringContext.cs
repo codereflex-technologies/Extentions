@@ -4,21 +4,21 @@ using System.Text;
 
 namespace Codereflex.Common.Extentions
 {
-    public class DelimitedStringContext : IContext
+    public class DelimitedStringContext : IContext<string>
     {
-        public string InputString { get; }
+        public string Input { get; }
 
         public string Delimiter { get; }
 
         public DelimitedStringContext(string delimitedstring, string delimiter)
         {
-            this.InputString = delimitedstring;
+            this.Input = delimitedstring;
             this.Delimiter = delimiter;
         }
 
         public  IMapper<int> Map()
         {
-            return new IndexBasedMapper(this.InputString, this.Delimiter);
+            return new IndexBasedMapper(this.Input, this.Delimiter);
         }
     }
 }

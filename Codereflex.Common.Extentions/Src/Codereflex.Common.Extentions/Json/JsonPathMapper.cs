@@ -3,7 +3,7 @@
 namespace Codereflex.Common.Extentions
 {
     /// <summary>
-    /// Class implements <see cref="IJsonParser"/>.  
+    /// Class which implements <see cref="IMapper{TMap}"/>  
     /// </summary>
     public class JsonPathMapper : IMapper<string>
     {
@@ -22,9 +22,7 @@ namespace Codereflex.Common.Extentions
         /// </summary>
         /// <param name="jsonpath">A string that contains json path expression</param>
         /// <returns>Token returned by <paramref name="jsonpath"/> expression</returns>
-        
-            
-
+    
         public IToken<IMapper<string>> From(string jsonpath)
         {
             jObject = jObject ?? JObject.Parse(jsonString);

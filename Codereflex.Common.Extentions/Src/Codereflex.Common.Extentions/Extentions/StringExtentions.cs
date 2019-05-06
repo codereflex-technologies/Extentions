@@ -96,6 +96,12 @@ namespace Codereflex.Common.Extentions
             return new JsonContext(jsonstring);
         }
 
+        public static FileContext File(this string filepath)
+        {
+             
+            return new FileContext(filepath); 
+        }
+
         /// <summary>
         /// Validates <paramref name="value"/> and throws exception if <paramref name="value"/> is null ,empty or whitespace  
         /// </summary>

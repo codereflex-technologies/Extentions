@@ -1,13 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Text;
 using System.Web;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace Codereflex.Common.Extentions
@@ -24,16 +18,17 @@ namespace Codereflex.Common.Extentions
         /// <param name="instance">The object to be serialized.</param>
         /// <param name="encodejsonstring">The value that indicates if json string should be encoded to javascript string format.</param>
         /// <returns></returns>
-        public static string ToJson<T> (this T instance,bool encodejsonstring = false) where T : class
+        public static string ToJson<T>(this T instance, bool encodejsonstring = false) where T : class
         {
-            
+
             if (instance == null) return string.Empty;
             string jsonstring;
             try
             {
                 jsonstring = JsonConvert.SerializeObject(instance);
-                if(encodejsonstring) {
-                   jsonstring = HttpUtility.JavaScriptStringEncode(jsonstring, true);
+                if (encodejsonstring)
+                {
+                    jsonstring = HttpUtility.JavaScriptStringEncode(jsonstring, true);
                 }
             }
             catch
@@ -41,7 +36,7 @@ namespace Codereflex.Common.Extentions
                 return string.Empty;
             }
             return jsonstring;
-            }
+        }
 
         /// <summary>
         /// Serailize given <paramref name="instance"/> to json
@@ -53,7 +48,7 @@ namespace Codereflex.Common.Extentions
         {
             if (instance == null) { return string.Empty; }
             XmlSerializer serializer = new XmlSerializer(instance.GetType());
-            
+
             string xmlstring = string.Empty;
 
             using (var xmlstringwriter = new StringWriter())
@@ -61,16 +56,10 @@ namespace Codereflex.Common.Extentions
                 using (XmlWriter writer = XmlWriter.Create(xmlstringwriter))
                 {
                     serializer.Serialize(writer, instance);
-                    xmlstring = xmlstringwriter.ToString(); 
+                    xmlstring = xmlstringwriter.ToString();
                 }
             }
             return xmlstring;
         }
-
-       
     }
-
-
-
-   
 }

@@ -8,8 +8,17 @@ namespace Codereflex.Common.Extentions.Tests
     [TestClass]
     public class StringExtentionsTests : TestBase
     {
+        [TestMethod]
+        public void Test_FileReader()
+        {
 
-        
+            
+            "./test.txt".File().Stream().ForEachLine(line => {
+                    line.Should().NotBeNullOrWhiteSpace();     
+            } );
+
+        }
+
         [TestMethod]
         public void Test_IsJson()
         {
@@ -18,6 +27,7 @@ namespace Codereflex.Common.Extentions.Tests
              employeejsonstring.IsJson().Should().BeTrue();
             "".IsJson().Should().BeFalse();
             nullstring.IsJson().Should().BeFalse();
+           
         }
 
         [TestMethod]
@@ -31,7 +41,15 @@ namespace Codereflex.Common.Extentions.Tests
             actualemp.Name.Should().Be(employeetestobject.Name);
             actualemp.BasePay.Should().Be(employeetestobject.BasePay);
             actualemp.TypeOfEmployement.Should().Be(employeetestobject.TypeOfEmployement);
+
+            //Test with map to Enum
+            string statuscode = "{\"status\": 200}";
+            System.Net.HttpStatusCode statusCode;
+            statuscode.Json().Map().From("$.status").Into<int>(r => statusCode = (System.Net.HttpStatusCode)r);
+         
         }
+   
+
         [TestMethod]
         public void Test_DelimitedMapper()
         {

@@ -6,7 +6,7 @@ using System.Text;
 namespace Codereflex.Common.Extentions
 {
     /// <summary>
-    /// Class that defines Json Token.
+    /// Class that defines abstract Json Token.
     /// </summary>
     public class JsonToken : IToken<IMapper<string>>
     {

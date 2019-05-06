@@ -4,10 +4,13 @@ using System.Text;
 
 namespace Codereflex.Common.Extentions
 {
-    public interface IContext
+    /// <summary>
+    /// Defines context for given <typeparamref name="T"/>
+    /// </summary>
+    /// <typeparam name="T">Type of input passed on to context</typeparam>
+    public interface IContext<T>
     {
-         string InputString { get;  }
-         
-
+        
+         T Input { get;  }
     }
 }

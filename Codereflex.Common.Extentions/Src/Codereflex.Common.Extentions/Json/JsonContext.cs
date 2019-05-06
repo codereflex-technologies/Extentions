@@ -6,7 +6,8 @@ using System.Text;
 
 namespace Codereflex.Common.Extentions
 {
-    public class JsonContext : IContext
+    //Defines Json context to string type and provides functions to work with json.
+    public class JsonContext : IContext<string>
     {
         private string jsonString;
 
@@ -15,30 +16,31 @@ namespace Codereflex.Common.Extentions
             this.jsonString = jsonstring;
         }
 
-        public string InputString { get => jsonString; }
+        public string Input { get => jsonString; }
 
+        /// <summary>
+        /// Initializes Json Mapper on given Json Context
+        /// </summary>
+        /// <returns></returns>
         public  IMapper<string> Map()
         {
-            return new JsonPathMapper(this.InputString);
+            return new JsonPathMapper(this.Input);
         }
 
         /// <summary>
         /// Deserializes json string to object of <typeparamref name="T"/> type.
         /// </summary>
         /// <typeparam name="T">The Type of deserialized object</typeparam>
-        /// <param name="thisstring">Json string</param>
         /// <param name="isencodedstring">A value that indicates <paramref name="jsonstring"/> is in encoded string format.</param>
         /// <returns>Instance of <typeparamref name="T"/> if successfull else default</returns>
         public  T ToObject<T>(bool isencodedstring = false) where T : class, new()
         {
-            
-
             try
             {
-                string jsonstring = this.InputString;
+                string jsonstring = this.Input;
                 if (isencodedstring)
                 {
-                    JToken token = JToken.Parse(this.InputString);
+                    JToken token = JToken.Parse(this.Input);
                     jsonstring = token.ToString();
                 }
 
@@ -50,11 +52,13 @@ namespace Codereflex.Common.Extentions
             }
 
         }
-
-        public  string ToJsonFormat()
+        /// <summary>
+        /// Removes escape characters and formats the string to json
+        /// </summary>
+        /// <returns>string in json format</returns>
+        public string ToJsonFormat()
         {
-
-            JToken token = JToken.Parse(this.InputString);
+            JToken token = JToken.Parse(this.Input);
             return token.ToString();
 
         }

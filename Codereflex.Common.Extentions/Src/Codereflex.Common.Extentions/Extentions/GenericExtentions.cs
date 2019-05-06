@@ -36,12 +36,25 @@ namespace Codereflex.Common.Extentions
         /// Validates <paramref name="instance"/> and throws error if <paramref name="instance"/> is null.  
         /// </summary>
         /// <typeparam name="T">Type of <paramref name="instance"/></typeparam>
-        /// <param name="instance">object instance to verify</param>
-        /// <param name="throwwhennull">Indicates if excepion should be thrown when <paramref name="instance"/> is null</param>
+        /// <param name="instance">object instance to verify.</param>
+        /// <param name="throwwhennull">Indicates if excepion should be thrown when <paramref name="instance"/> is null.</param>
         public static void ThrowIfNull<T>(this T instance, bool throwwhennull = true) where T : class
         {
             if (instance == null && throwwhennull)
                 throw new ArgumentNullException(nameof(instance));
         }
+
+        /// <summary>
+        /// Validate given instance object by evaluating <paramref name="expression"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of <paramref name="instance"/></typeparam>
+        /// <param name="instance">Given instance to be validated.</param>
+        /// <param name="expression">predicate function for validating given <paramref name="instance"/>.</param>
+        /// <returns></returns>
+        public static bool When<T>(this T instance, Predicate<T> expression)
+        {
+            return expression(instance);
+        }
+    
     }
 }

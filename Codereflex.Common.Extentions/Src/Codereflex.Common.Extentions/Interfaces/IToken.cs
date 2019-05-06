@@ -10,6 +10,6 @@ namespace Codereflex.Common.Extentions
     /// </summary>
     public interface IToken<TParser>
     {
-        TParser Into<TResult>(Action<TResult> map);
+         TParser Into<TResult>(Action<TResult> map);
     }
 }
