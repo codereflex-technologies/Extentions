@@ -114,5 +114,41 @@ namespace Codereflex.Common.Extentions
                 throw new ArgumentException(nameof(value));
             }
         }
+      
+        /// <summary>
+        /// Returns substring between <paramref name="delimiter1"/> and <paramref name="delimiter2"/>
+        /// </summary>
+        /// <param name="value">The string to search for a match</param>
+        /// <param name="delimiter1">starting delimiter text </param>
+        /// <param name="delimiter2">ending delimiter text</param>
+        /// <returns></returns>
+        public static string BetweenDelimiters(this string value,string delimiter1,string delimiter2 )
+        {
+            //build regular expression
+            string regexpression = $"(?<={delimiter1})([^//]+)(?={delimiter2})";
+            var match = Regex.Match(value, regexpression,
+                                       RegexOptions.IgnoreCase);
+           
+            return match.Value;
+        }
+        public static void To<T>(this string value,Action<T> onsuccess,bool throwexceptiononerror = false)
+        {
+            try
+            {
+                T returnvalue = (T)Convert.ChangeType(value, typeof(T));
+                onsuccess(returnvalue);
+            }
+            catch (FormatException)  
+            {
+                if(throwexceptiononerror)
+                {
+                    throw;
+                }
+                else
+                {
+                    onsuccess(default(T));
+                }
+            }
+        }
     }
 }

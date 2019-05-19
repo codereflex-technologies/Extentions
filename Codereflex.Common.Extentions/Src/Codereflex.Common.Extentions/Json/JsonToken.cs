@@ -32,5 +32,10 @@ namespace Codereflex.Common.Extentions
             return jsonParser;
         }
 
+        public override string ToString()
+        {
+            return jToken.ToString();
+        }
+
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using System;
 using Codereflex.Common.Extentions.TestObjects;
+using System.Net;
 
 namespace Codereflex.Common.Extentions.Tests
 {
@@ -48,7 +49,40 @@ namespace Codereflex.Common.Extentions.Tests
             statuscode.Json().Map().From("$.status").Into<int>(r => statusCode = (System.Net.HttpStatusCode)r);
          
         }
-   
+
+        [TestMethod]
+        public void Test_BetweenDelimiters()
+        {
+            string basestring = @"File upload started, filename:'EN32515_17_05_2019_15_28_07.xml',username:'test@google.com'";
+            string expected = "EN32515_17_05_2019_15_28_07.xml";
+            string actual = basestring.BetweenDelimiters("filename:'", "',");
+            actual.Should().Be(expected);
+            expected = "test@google.com";
+            actual = basestring.BetweenDelimiters("username:'", "'");
+            actual.Should().Be(expected);
+        }
+
+        [TestMethod]
+        public void Test_WhenMethod()
+        {
+            string stringval = "1d";
+            Action act = () => stringval.To<int>((actual) => actual.Should().Be(10),true);
+            act.Should().Throw<FormatException>();
+            act = () => stringval.To<int>((actual) => actual.Should().Be(0));
+            act.Should().NotThrow<FormatException>();
+            stringval = "10.00";
+            stringval.To<double>((actual) => actual.Should().Be(10.00));
+            stringval = "true";
+            stringval.To<bool>((actual) => actual.Should().Be(true));
+            stringval = "false";
+            stringval.To<bool>((actual) => actual.Should().Be(false));
+            stringval = "200";
+             HttpStatusCode expected = HttpStatusCode.OK;
+            stringval.To<int>((actual) => {
+
+                ((HttpStatusCode)actual).Should().Be(expected);
+               });
+        }
 
         [TestMethod]
         public void Test_DelimitedMapper()

@@ -20,7 +20,10 @@ namespace Codereflex.Common.Extentions
 
         }
 
-       
+        public bool IsExists()
+        {
+            return File.Exists(this.Input);
+        }
         
         /// <summary>
         /// Returns stream reader for the specified file.

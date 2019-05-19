@@ -7,13 +7,16 @@
     <PackageTags />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes>1.0.0  Initial Release
-1.0.1  Added file context and boolean context extentions to string</PackageReleaseNotes>
+1.0.1  Added file context and boolean context extentions to string
+1.0.2  Added more string extentions.  
+  
+</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/codereflex-technologies/Extentions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/codereflex-technologies/Extentions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
   
   <ItemGroup>
