@@ -15,28 +15,7 @@ namespace Codereflex.Common.Extentions
    {
       
 
-        /// <summary>
-        /// Deserializes xml string to object of  <typeparamref name="T"/> type
-        /// </summary>
-        /// <typeparam name="T">The Type  of deserialized object</typeparam>
-        /// <param name="xmlstring">Xml string</param>
-        /// <returns>Instance of  <typeparamref name="T"/> if successfull else default</returns>
-        public static T XmlToObject<T>(this string xmlstring) where T: class,new()
-        {
-
-            xmlstring.ThrowIfNullEmptyOrWhiteSpace();
-            var serializer = new XmlSerializer(typeof(T));
-            using (var stream = new StringReader(xmlstring))
-            {
-                try { 
-                    return (T)serializer.Deserialize(stream);
-                }
-                catch
-                {
-                   return default(T);
-                }
-            }
-        }
+ 
         /// <summary>
         /// Validates if <paramref name="jsonstring"/> is valid and well formed json
         /// </summary>
@@ -94,6 +73,16 @@ namespace Codereflex.Common.Extentions
         public static JsonContext Json(this string jsonstring)
         {
             return new JsonContext(jsonstring);
+        }
+
+        // <summary>
+        /// Returns Xml context for the given <paramref name="xmlstring"/>
+        /// </summary>
+        /// <param name="xmlstring"></param>
+        /// <returns></returns>
+        public static XmlContext Xml(this string xmlstring)
+        {
+            return new XmlContext(xmlstring);
         }
 
         public static FileContext File(this string filepath)
